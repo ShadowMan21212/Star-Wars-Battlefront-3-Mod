@@ -560,7 +560,7 @@ surface.SetMaterial(newhealthstand)
 surface.SetDrawColor(255,255,255,255)
 surface.DrawTexturedRectUV(ScrW()-1825+u,ScrH()-340+r,width,height,u1,v1,u2,v2)
 if LocalPlayer():GetModel() != "models/models/ferroda/ferroda_2.mdl" then
-local crosshair_type = Material("D:/Games/steamapps/common/GarrysMod/garrysmod/materials/crosshairs/bf3testcrosshair4.png")
+local crosshair_type = Material("materials/hud/bf3testcrosshair4.png")
 surface.SetMaterial(crosshair_type)
 surface.SetDrawColor(255,255,255,255)
 
