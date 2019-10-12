@@ -166,7 +166,7 @@ surface.CreateFont( "SprintFont", {
 	additive = false, 
 	outline = false, 
 } )
-  surface.CreateFont( "BF3Font", {
+  surface.CreateFont( "BF3FontL", {
   font = "Eurostile", -- Use the font-name which is shown to you by your operating system Font Viewer, not the file name
   extended = false,
   size = 24,
