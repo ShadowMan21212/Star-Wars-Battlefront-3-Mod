@@ -108,7 +108,7 @@ else
   
   --always draw hmark invisible
   	surface.SetDrawColor( 255, 255, 255, alpha ) 
-  	local blur_mat = Material( "C:/Users/The Asian Gamer/Desktop/New folder (15)/red_hitmarker4.png" )
+  	local blur_mat = Material( "materials/hud/red_hitmarker4.png" )
 surface.SetMaterial(blur_mat)
 surface.DrawTexturedRect(ScrW() / 2.067 ,ScrH() / 2.119 ,64,64) 
 
