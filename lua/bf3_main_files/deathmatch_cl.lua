@@ -38,12 +38,7 @@ if ( name == "CHudHealth" or name == "CHudBattery" or name =="CHudAmmo") then
 end)
 
 local size=165
-	hook.Add("HUDPaint","CustomCrosshair",function()
 
-		surface.SetDrawColor(255,255,255,170)
-		surface.SetMaterial(Material("D:/Games/steamapps/common/GarrysMod/garrysmod/materials/crosshairs/bf2_default_crosshair.png"))
-		surface.DrawTexturedRect(ScrW()/2-size/2,ScrH()/2-size/2,size,size)
-end )
 
 
 
