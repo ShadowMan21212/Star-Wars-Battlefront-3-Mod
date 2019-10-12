@@ -15,8 +15,9 @@ To Install...
 2. Download the lua folder from here
 3. Drop lua into mod folder
 4. Drop whole folder into GMOD addon directory.
-5. Only map that works is Mos Mesric. So launch mos mesric, and you should be set. 
-5. Enjoy(if possible)
+5. Download Mos Mesric from https://steamcommunity.com/sharedfiles/filedetails/?id=614696420
+5a. Only map that works is Mos Mesric. So launch mos mesric, and you should be set. 
+6. Enjoy(if possible)
 
 Known Bugs and Glitches:
   Will not have proper HUD on non-1080p res.
