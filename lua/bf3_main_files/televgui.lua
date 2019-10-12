@@ -132,7 +132,7 @@ end
 local cmd1 = vgui.Create("DButton",frame)
 cmd1:SetPos(400,700)
 cmd1:SetSize(50,40)
-cmd1:SetImage(cmd1ownersv .. ".png")
+cmd1:SetImage("materials/hud/"..cmd1ownersv .. ".png")
 cmd1.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -140,7 +140,7 @@ end
 local cmd2 = vgui.Create("DButton",frame)
 cmd2:SetPos(460,805)
 cmd2:SetSize(500,40)
-cmd2:SetImage(cmd2ownersv .. ".png")
+cmd2:SetImage("materials/hud/"..cmd2ownersv .. ".png")
 cmd2.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -150,7 +150,7 @@ end
 local cmd3 = vgui.Create("DButton",frame)
 cmd3:SetPos(590,850)
 cmd3:SetSize(40,40)
-cmd3:SetImage(cmd3ownersv .. ".png")
+cmd3:SetImage("materials/hud/"..cmd3ownersv .. ".png")
 cmd3.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -158,7 +158,7 @@ end
 local cmd4 = vgui.Create("DButton",frame)
 cmd4:SetPos(675,720)
 cmd4:SetSize(40,40)
-cmd4:SetImage(cmd4ownersv .. ".png")
+cmd4:SetImage("materials/hud/"..cmd4ownersv .. ".png")
 cmd4.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -166,14 +166,14 @@ end
 local cmd5 = vgui.Create("DButton",frame)
 cmd5:SetPos(747,770)
 cmd5:SetSize(40,40)
-cmd5:SetImage(cmd5ownersv .. ".png")
+cmd5:SetImage("materials/hud/"..cmd5ownersv .. ".png")
 cmd5.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
 local cmd6 = vgui.Create("DButton",frame)
 cmd6:SetPos(570,590)
 cmd6:SetSize(40,40)
-cmd6:SetImage(cmd6ownersv .. ".png")
+cmd6:SetImage("materials/hud/"..cmd6ownersv .. ".png")
 cmd6.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -181,7 +181,7 @@ end
 local cmd7 = vgui.Create("DButton",frame)
 cmd7:SetPos(340,478)
 cmd7:SetSize(40,40)
-cmd7:SetImage(cmd7ownersv .. ".png")
+cmd7:SetImage("materials/hud/"..cmd7ownersv .. ".png")
 cmd7.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -189,7 +189,7 @@ end
 local cmd8 = vgui.Create("DButton",frame)
 cmd8:SetPos(180,278)
 cmd8:SetSize(40,40)
-cmd8:SetImage(cmd8ownersv .. ".png")
+cmd8:SetImage("materials/hud/"..cmd8ownersv .. ".png")
 cmd8.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -197,7 +197,7 @@ end
 local cmd9 = vgui.Create("DButton",frame)
 cmd9:SetPos(390,288)
 cmd9:SetSize(40,40)
-cmd9:SetImage(cmd9ownersv .. ".png")
+cmd9:SetImage("materials/hud/"..cmd9ownersv .. ".png")
 cmd9.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -205,7 +205,7 @@ end
 local cmd10 = vgui.Create("DButton",frame)
 cmd10:SetPos(490,272)
 cmd10:SetSize(40,40)
-cmd10:SetImage(cmd10ownersv .. ".png")
+cmd10:SetImage("materials/hud/"..cmd10ownersv .. ".png")
 cmd10.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -213,7 +213,7 @@ end
 local cmd11 = vgui.Create("DButton",frame)
 cmd11:SetPos(720,272)
 cmd11:SetSize(40,40)
-cmd11:SetImage(cmd11ownersv .. ".png")
+cmd11:SetImage("materials/hud/"..cmd11ownersv .. ".png")
 cmd11.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -221,7 +221,7 @@ end
 local cmd12 = vgui.Create("DButton",frame)
 cmd12:SetPos(650,462)
 cmd12:SetSize(40,40)
-cmd12:SetImage(cmd12ownersv .. ".png")
+cmd12:SetImage("materials/hud/"..cmd12ownersv .. ".png")
 cmd12.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -229,7 +229,7 @@ end
 local repbase1 = vgui.Create("DButton",frame)
 repbase1:SetPos(460,688)
 repbase1:SetSize(40,40)
-repbase1:SetImage("blu3" .. ".png")
+repbase1:SetImage("materials/hud/".."blu3" .. ".png")
 repbase1.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -237,7 +237,7 @@ end
 local repbase2 = vgui.Create("DButton",frame)
 repbase2:SetPos(469,477)
 repbase2:SetSize(40,40)
-repbase2:SetImage("blu3" .. ".png")
+repbase2:SetImage("materials/hud/".."blu3" .. ".png")
 repbase2.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -245,7 +245,7 @@ end
 local cisbase1 = vgui.Create("DButton",frame)
 cisbase1:SetPos(360,877)
 cisbase1:SetSize(40,40)
-cisbase1:SetImage("red2.png")
+cisbase1:SetImage("materials/hud/".."red2.png")
 cisbase1.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -253,7 +253,7 @@ end
 local cisbase2 = vgui.Create("DButton",frame)
 cisbase2:SetPos(307,254)
 cisbase2:SetSize(40,40)
-cisbase2:SetImage("red2.png")
+cisbase2:SetImage("materials/hud/".."red2.png")
 cisbase2.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -261,7 +261,7 @@ end
 local cisbase3 = vgui.Create("DButton",frame)
 cisbase3:SetPos(737,554)
 cisbase3:SetSize(40,40)
-cisbase3:SetImage("red2.png")
+cisbase3:SetImage("materials/hud/".."red2.png")
 cisbase3.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -269,7 +269,7 @@ end
 local cisbase4 = vgui.Create("DButton",frame)
 cisbase4:SetPos(813,754)
 cisbase4:SetSize(40,40)
-cisbase4:SetImage("red2.png")
+cisbase4:SetImage("materials/hud/".."red2.png")
 cisbase4.Paint = function(s,w,h)
 draw.RoundedBox(5,0,0,w,h,Color(255,120,120,0))
 end
@@ -277,7 +277,7 @@ end
 local spawn_button = vgui.Create("DButton",frame)
 spawn_button:SetPos(1300,1010)
 
-spawn_button:SetImage("materials/hud/spawnbar.png")
+spawn_button:SetImage("materials/hud/".."materials/hud/spawnbar.png")
 spawn_button:SetSize(600,30)
 
 spawn_button.Paint = function(s,w,h)
