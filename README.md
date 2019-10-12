@@ -36,9 +36,11 @@ Known Bugs and Glitches:
   If you spawn with default gear type "kill" in the chat to respawn
   
   
-  If ads does not work, type "lua_openscript zoomin.lua"
+
  
 Star Wars Battlefront 3 Mod
+
+
 As a kid, I loved seeing the leaked footage from this game. I thought BF3 was going to be the greatest game of all time.
 However, it never released, at least not in the form I wanted. DICE has done an amazing job on their series, but personally
 it's not my Battlefront. 
@@ -47,12 +49,16 @@ The goal of this mod is to recreate Pandemic's battlefront 3. I will be rebuildi
 has. 
 
 Battlefront 3 Goals
+
+
   Classic battlefront battles with space to ground(First Map, Kashyyyk)
   Clone Wars and Galatic Civil War Era
   MANY HEROES!!!
   Galactic Conquest
   
 Potential Ideas
+
+
   Story Mode?
   Hunt Mode?
   Killstreaks?
