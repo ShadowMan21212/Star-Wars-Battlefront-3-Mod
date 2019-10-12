@@ -1,0 +1,76 @@
+
+AddCSLuaFile()
+
+ENT.Type 			= "anim"
+ENT.Base 			= "base_anim"
+ENT.PrintName		= "Tactical Combine Helmet"
+ENT.Author			= "FiLzO"
+ENT.Purpose			= "Banana."
+ENT.Category		= "Combine Units +PLUS+"
+
+ENT.Spawnable		= false
+ENT.AdminOnly		= false
+
+if SERVER then
+
+function ENT:Initialize()
+self:SetModel("models/shield/faceshield.mdl")
+self:PhysicsInit( SOLID_VPHYSICS )
+self:SetMoveType( MOVETYPE_VPHYSICS )
+self:SetSolid( SOLID_VPHYSICS )
+self:SetCollisionGroup( COLLISION_GROUP_WEAPON )	
+self:SetHealth(120) -- Blaze It ( ͡° ͜ʖ ͡°) --
+self:SetMaxHealth(self:Health())
+local phys = self:GetPhysicsObject()	
+if (phys:IsValid()) then
+	phys:Wake()
+end	
+local self_name = "shieldface" .. self:EntIndex()
+self:SetName( self_name )
+end
+
+function ENT:Think()
+end
+
+function ENT:PhysicsCollide(data,phys)
+if data.Speed > 50 and data.Speed < 300 then
+self:EmitSound("physics/metal/weapon_impact_soft" .. math.random(1,3) .. ".wav", 75, math.random(90,110))
+end
+if data.Speed > 300 then
+self:EmitSound("physics/metal/weapon_impact_hard" .. math.random(1,3) .. ".wav", 75, math.random(90,110))
+end
+end
+
+function ENT:OnTakeDamage(dmginfo)
+	self:TakePhysicsDamage(dmginfo)
+	self:SetHealth(self:Health() - dmginfo:GetDamage())
+	self:EmitSound("physics/metal/metal_sheet_impact_bullet" .. math.random(1,2) .. ".wav", 75, math.random(90,110))
+	if self:Health() <= 0 then
+	self:EmitSound("physics/metal/metal_box_break" .. math.random(1,2) .. ".wav", 75, math.random(90,110))
+	self.helmet = ents.Create("prop_physics")
+	self.helmet:SetModel(self:GetModel())
+	self.helmet:SetPos( self:GetPos() )
+	self.helmet:SetAngles( self:GetAngles() )
+	self.helmet:SetCollisionGroup(COLLISION_GROUP_WEAPON)
+	self.helmet:SetOwner( self.Owner )
+	self.helmet:Spawn()
+	self.helmet:Activate()
+	local phys2 = self.helmet:GetPhysicsObject()	
+	if (phys2:IsValid()) then
+	phys2:SetVelocity(self:GetForward() * math.random(-200,200) + self:GetUp() * math.random(-200,200) + self:GetRight() * math.random(-200,200))
+	end	
+	SafeRemoveEntityDelayed(self.helmet,5)
+	self.dissolver = ents.Create("env_entity_dissolver")
+	self.dissolver:SetKeyValue("dissolvetype", "0")
+	self.dissolver:SetKeyValue("magnitude", "1")
+	self.dissolver:SetPos(self.helmet:GetPos())
+	self.dissolver:Spawn()
+	local name = "Dissolving_"..math.random(1,9999)
+	self.helmet:SetName(name)
+	self.dissolver:Fire("Dissolve",name,0)
+	self.dissolver:Fire("kill","",0.01)
+	self:Remove()
+	end
+end
+
+end
