@@ -28,8 +28,14 @@ To Install...
 6. Enjoy(if possible)
 
 Known Bugs and Glitches:
+
+
   Will not have proper HUD on non-1080p res.
+  
+  
   If you spawn with default gear type "kill" in the chat to respawn
+  
+  
   If ads does not work, type "lua_openscript zoomin.lua"
  
 Star Wars Battlefront 3 Mod
