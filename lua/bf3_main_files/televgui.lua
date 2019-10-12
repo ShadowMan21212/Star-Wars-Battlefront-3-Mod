@@ -4,7 +4,7 @@ hook.Add("HUDPaint","yooooooo",function()
 
 
 	COLOR_TEAM_BLUE = Color( 153, 204, 0, 120 )
-local sat = Material("C:/Users/The Asian Gamer/Desktop/New folder (9)/spawnmap3.png")
+local sat = Material("materials/hud/spawnmap3.png")
 surface.SetDrawColor(255,255,255,255)
 	surface.SetMaterial( sat )
 	surface.DrawTexturedRect( 0, 0, 1920, 1080 )
@@ -26,9 +26,9 @@ local class = "repbase1tele"
 		local cmd12ownersv = nil
 function refreshcmd()
 	local entities_max = ents.GetAll()
-	local snilmat = Material("C:/Users/The Asian Gamer/Desktop/New folder (9)/nilcheck2.png")
-	local sblumat = Material("C:/Users/The Asian Gamer/Desktop/New folder (9)/repcheck1.png")
-	local sredmat = Material("C:/Users/The Asian Gamer/Desktop/New folder (9)/cischeck3.png")
+	local snilmat = Material("materials/hud/nilcheck2.png")
+	local sblumat = Material("materials/hud/repcheck1.png")
+	local sredmat = Material("materials/hud/cischeck3.png")
 	for k,v in pairs(entities_max) do
 	if v:IsPlayer() then
 		 cmd1ownersv = v:GetNetworkedString("cmd1owner", "fail")
