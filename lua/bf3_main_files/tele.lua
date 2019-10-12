@@ -361,6 +361,7 @@ function reploadout1load( ply )
     ply:SetModel( "models/player/sono/starwars/501st_trooper.mdl" ) ---models/reizer_cgi_p2/501_trp/501_trp.mdl
     ply:Give( "tfa_752_dc15s_expanded" )
     ply.Blu = true
+	include("bf3_main_files/zoomin.lua")
 end
 
 function reploadout2load( ply )
@@ -369,6 +370,7 @@ function reploadout2load( ply )
     ply:SetModel( "models/player/sgg/starwars/clonetrooper_marine.mdl" )  ---models/reizer_cgi_p2/guard_maj/guard_maj.mdl
     ply:Give( "chaingun_servius" )
     ply.Blu = true
+	include("bf3_main_files/zoomin.lua")
 end
 
 function reploadout3load( ply )
@@ -377,6 +379,7 @@ function reploadout3load( ply )
     ply:SetModel( "models/player/212thairborr/212thairborr.mdl" )
     ply:Give( "weapon_752_dc17m_sn" )
     ply.Blu = true
+	include("bf3_main_files/zoomin.lua")
 end
 
 function ferrodaloadout(ply) 
@@ -410,6 +413,7 @@ function x2loadout(ply)
     ply:SetModel( "models/x2cw/x2cw.mdl" )
      ply:Give( "tfa_dc15a_expanded" )
     ply.Blu = true
+	include("bf3_main_files/zoomin.lua")
 end
 function x1loadout(ply) 
  ply:StripWeapons()
@@ -417,6 +421,7 @@ function x1loadout(ply)
     ply:SetModel( "models/x1cw/x1cw.mdl" )
      ply:Give( "tfa_dl44" )
     ply.Blu = true
+	include("bf3_main_files/zoomin.lua")
 end
 function commandoloadout(ply) 
  ply:StripWeapons()
@@ -424,6 +429,7 @@ function commandoloadout(ply)
     ply:SetModel( "models/player/sgg/starwars/clone_commando_07.mdl" )
      ply:Give( "weapon_752_dc17m_br" )
     ply.Blu = true
+	include("bf3_main_files/zoomin.lua")
 end
 
 
