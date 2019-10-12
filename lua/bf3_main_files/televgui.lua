@@ -277,7 +277,7 @@ end
 local spawn_button = vgui.Create("DButton",frame)
 spawn_button:SetPos(1300,1010)
 
-spawn_button:SetImage("spawnbar.png")
+spawn_button:SetImage("materials/hud/spawnbar.png")
 spawn_button:SetSize(600,30)
 
 spawn_button.Paint = function(s,w,h)
