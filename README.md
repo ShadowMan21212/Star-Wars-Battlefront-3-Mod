@@ -20,8 +20,9 @@ Currently, this mod is heavily bugged and WIP but it serves as a concept for wha
   
 As previously stated, this mod is extremely buggy and shouldn't really even be put up, but why not?
 To Install...
-1. Download the mod from https://mega.nz/#F!t4ZTVC4a!DA1ZcDYktHMtfwzCqsNOhw
-2. Download the lua folder from here
+1. Download the mod from https://mega.nz/fm/ZpZlWYYI
+1a. Download all files from within the V.1.1 folder
+2. Download the lua folder from here on Github.
 3. Drop lua into mod folder
 4. Drop whole folder into GMOD addon directory.
 5. Download the whole collection @ https://steamcommunity.com/sharedfiles/filedetails/?edit=true&id=1887937516
