@@ -1,5 +1,6 @@
 # Star Wars Battlefront 3 Mod V.1.1
-A mod for GMOD that aims to recreate Pandemic's Battlefront 3. Link to concept footage/gameplay https://www.youtube.com/watch?v=Dml2L7vGvIw&feature=youtu.be
+A mod for GMOD that aims to recreate Pandemic's Battlefront 3. Link to concept footage/gameplay https://youtu.be/zAZYCbtsA1g
+
 This mod currently merges several other mods, as well as using some original code. The next mod version will use original code and be simpler.
 Currently, this mod is heavily bugged and WIP but it serves as a concept for what I will build from scratch. Huge thanks to
 
