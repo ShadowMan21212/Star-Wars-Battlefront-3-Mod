@@ -13,7 +13,7 @@ function ENT:SpawnFunction( ply, tr )
 	self.Spawn_angles.roll = 0
 	self.Spawn_angles.yaw = self.Spawn_angles.yaw + 180
 
-	local ent = ents.Create( "npc_blu_combine_soldier" )
+	local ent = ents.Create( "npc_red_stormtrooper" )
 	ent:SetKeyValue( "disableshadows", "1" )
 	ent:SetPos( SpawnPos )
 	ent:SetAngles( self.Spawn_angles )
@@ -21,6 +21,7 @@ function ENT:SpawnFunction( ply, tr )
 	ent:SetColor( 255, 255, 255, 0 )
 	ent:Spawn()
 	ent:Activate()
+
 	return ent
 end
 
@@ -37,18 +38,18 @@ local Skill = {}
 	Skill[4] = (NS4)
 	Skill[5] = (NS5)
 
-Weap1 = "weapon_752_dc15s"
-Weap2 = "weapon_752_dc15s"
-Weap3 = "weapon_752_dc15s"
+Weap1 = "weapon_752_e11"
+Weap2 = "weapon_752_e11"
+Weap3 = "weapon_752_e11"
 
 local Weapon = {}
 	Weapon[1] = (Weap1)
 	Weapon[2] = (Weap2)
 	Weapon[3] = (Weap3)
 
-Squad1 = "BluAlpha"
-Squad2 = "BluBravo"
-Squad3 = "BluCharlie"
+Squad1 = "RedAlpha"
+Squad2 = "RedBravo"
+Squad3 = "RedCharlie"
 
 local Squad = {}
 	Squad[1] = (Squad1)
@@ -56,45 +57,44 @@ local Squad = {}
 	Squad[3] = (Squad3)
 
 function ENT:Initialize()
-	self.blusoldier = ents.Create( "npc_combine_s" )
+	self.redsoldier = ents.Create( "npc_combine_s" )
 	self:SetModel( "models/shells/shell_12gauge.mdl" )
-	self.blusoldier:SetPos( self:GetPos() )
-	self.blusoldier:SetAngles( self:GetAngles() )
-	self.blusoldier:SetKeyValue( "model", "models/npc/player/sono/starwars/501st_trooper.mdl" ) ---models/hyperspace_network/501st_trooper_npc/501st_trooper_npc.mdl
-	self.blusoldier:SetKeyValue( "spawnflags", "256" + "8192" )
-	self.blusoldier:SetKeyValue( "squadname", Squad[math.random(1,3)] )
+	self.redsoldier:SetPos( self:GetPos() )
+	self.redsoldier:SetAngles( self:GetAngles() )
+	self.redsoldier:SetKeyValue( "model", "models/player/ven/tk_basic_npc/tk_basic.mdl" )
+	self.redsoldier:SetKeyValue( "spawnflags", "256" + "8192" )
+	self.redsoldier:SetKeyValue( "squadname", Squad[math.random(1,3)] )
 	if GetConVarNumber("rvb_mp_mode") == 0 then
-	self.blusoldier:SetKeyValue( "additionalequipment", GetConVarString("gmod_npcweapon") )
+	self.redsoldier:SetKeyValue( "additionalequipment", GetConVarString("gmod_npcweapon") )
 	if GetConVarString("gmod_npcweapon") == "" then
-	self.blusoldier:SetKeyValue( "additionalequipment", Weapon[math.random(1,3)] )
+	self.redsoldier:SetKeyValue( "additionalequipment", Weapon[math.random(1,3)] )
 	end
 	end
 	if GetConVarNumber("rvb_mp_mode") == 1 then
-	self.blusoldier:SetKeyValue( "additionalequipment", C_RVBWEAPON:GetString() )
+	self.redsoldier:SetKeyValue( "additionalequipment", C_RVBWEAPON:GetString() )
 	if (C_RVBWEAPON:GetString() == "none" ) then
-	self.blusoldier:SetKeyValue( "additionalequipment", Weapon[math.random(1,3)] )
+	self.redsoldier:SetKeyValue( "additionalequipment", Weapon[math.random(1,3)] )
 	end
 	end
-	self.blusoldier:SetKeyValue( "tacticalvariant", "0" )
-	self.blusoldier:SetKeyValue( "NumGrenades", "5" )
-	self.blusoldier:CapabilitiesAdd(CAP_FRIENDLY_DMG_IMMUNE)
-	self.blusoldier:Spawn()
-	self.blusoldier:Activate()
-	self.blusoldier:SetCurrentWeaponProficiency( Skill[math.random(4,5)] )
-	local blusoldier_name = "npc_blu_combine_soldier"
-	self.blusoldier:SetName( blusoldier_name )
+	self.redsoldier:SetKeyValue( "tacticalvariant", "0" )
+	self.redsoldier:SetKeyValue( "NumGrenades", "5" )
+	self.redsoldier:CapabilitiesAdd(CAP_FRIENDLY_DMG_IMMUNE)
+	self.redsoldier:Spawn()
+	self.redsoldier:Activate()
+	self.redsoldier:SetCurrentWeaponProficiency( Skill[5] )
+	local redsoldier_name = "redsoldier" .. self.redsoldier:EntIndex()
+	self.redsoldier:SetName( "npc_red_stormtrooper" )
 	self.PatrolNodesMemory = {}
 	self.PatrolNodesMax = {}
 	self.WaitHereAndCheck = 0
-	self.bob = true
-	if IsValid( self.blusoldier ) then
-		self.blusoldier.Commandable = true
-		self.blusoldier.Commanded = false
-		self.blusoldier.CommandedNPC = false
-		self.blusoldier.HaveCommander = false
-		self.blusoldier.Blu = true
-		self.blusoldier:SetHealth(100)
-		self.blusoldier:SetMaxHealth(100)
+	if IsValid( self.redsoldier ) then
+		self.redsoldier.Commandable = true
+		self.redsoldier.Commanded = false
+		self.redsoldier.CommandedNPC = false
+		self.redsoldier.HaveCommander = false
+		self.redsoldier.Red = true
+		self.redsoldier:SetHealth(130)
+		self.redsoldier:SetMaxHealth(130)
 end
 end
 
@@ -114,12 +114,12 @@ end
 function ENT:Relations(ent)
 if IsValid(ent) then
 for _, enemy in pairs( ents.GetAll() ) do
-if (enemy:IsPlayer() or enemy:IsNPC()) and (enemy.Blu == true or enemy.Spec == true) then
+if (enemy:IsPlayer() or enemy:IsNPC()) and (enemy.Red == true or enemy.Spec == true) then
 
 ent:AddEntityRelationship( enemy, D_LI, 99 )
 
 end
-if (enemy:IsPlayer() or enemy:IsNPC()) and enemy.Red == true and enemy:GetPos():Distance(self:GetPos()) < 400 then
+if (enemy:IsPlayer() or enemy:IsNPC()) and enemy.Blu == true and enemy:GetPos():Distance(self:GetPos()) < 400 then
 
 ent:AddEntityRelationship( enemy, D_HT, 99 )
 
@@ -132,7 +132,7 @@ function ENT:MakeItMoreAmazing(ent)
 if IsValid(ent) then
 if self.HaveTarget == nil or self.HaveTarget == false then
 self.HaveTarget = true
-self.overhere = ents.Create("blu_finder")
+self.overhere = ents.Create("red_finder")
 self.overhere:SetPos(ent:GetPos())
 self.overhere:SetParent(ent)
 self.overhere:Spawn()
@@ -170,7 +170,7 @@ self.Patrolling = true
 self.GetHim = false
 end
 for _, PatrolNode in pairs( ents.FindByClass( "rvb_control_point" ) ) do
-if !table.HasValue(self.PatrolNodesMax, PatrolNode) and PatrolNode.Owner != "blu" then
+if !table.HasValue(self.PatrolNodesMax, PatrolNode) and PatrolNode.Owner != "red" then
 table.insert(self.PatrolNodesMax, PatrolNode)
 end
 if ent:GetPos():Distance(PatrolNode:GetPos()) < 110 then
@@ -185,7 +185,7 @@ local RandomNode = table.Random(self.PatrolNodesMax)
 if (table.Count(self.PatrolNodesMax, PatrolNode) <= 0) then
 table.Empty(self.PatrolNodesMax)
 end
-if IsValid(RandomNode) and (!table.HasValue(self.PatrolNodesMemory, PatrolNode) and self.Patrolling == true and self.Injured == 0 and !ent:IsCurrentSchedule( SCHED_FORCED_GO_RUN )and RandomNode.Owner != "blu" ) then
+if IsValid(RandomNode) and (!table.HasValue(self.PatrolNodesMemory, PatrolNode) and self.Patrolling == true and self.Injured == 0 and !ent:IsCurrentSchedule( SCHED_FORCED_GO_RUN )and RandomNode.Owner != "red" ) then
 ent:SetSaveValue( "m_vecLastPosition", RandomNode:GetPos() )
 ent:SetSchedule( SCHED_FORCED_GO_RUN )
 ent:Fire("StopPatrolling")
@@ -216,15 +216,14 @@ ent:Fire("StopPatrolling")
 end
 end
 
-
 function ENT:Think()
-	if IsValid( self.blusoldier ) then
+	if IsValid( self.redsoldier ) then
 
-	self:MakeItMoreAmazing(self.blusoldier)
+	self:MakeItMoreAmazing(self.redsoldier)
 
-	self:Relations(self.blusoldier)
+	self:Relations(self.redsoldier)
 
-	self:InjuredEffect(self.blusoldier)
+	self:InjuredEffect(self.redsoldier)
 
 	if ( CONTROL_POINT_MODE == nil ) then
 	self.PlatrolType = 2
@@ -233,15 +232,15 @@ function ENT:Think()
 	end
 
 	if ( self.PlatrolType == 2 and PAYLOAD_MODE == nil) then
-	self:Patroll(self.blusoldier)
+	self:Patroll(self.redsoldier)
 	end
 
 	if ( self.PlatrolType == 1 ) then
-	self:PatrollNew(self.blusoldier)
+	self:PatrollNew(self.redsoldier)
 	end
 
 	end
-if !IsValid( self.blusoldier ) or self.blusoldier:Health() <= 0 then
+if !IsValid( self.redsoldier ) or self.redsoldier:Health() <= 0 then
 self:Remove()
 end
 end
@@ -250,7 +249,7 @@ function ENT:OnTakeDamage()
 end
 
 function ENT:OnRemove()
-	if IsValid( self.blusoldier ) then
-		self.blusoldier:Remove()
+	if IsValid( self.redsoldier ) then
+		self.redsoldier:Remove()
 	end
 end

@@ -61,7 +61,7 @@ function ENT:Initialize()
 	self:SetModel( "models/shells/shell_12gauge.mdl" )
 	self.redsoldier:SetPos( self:GetPos() )
 	self.redsoldier:SetAngles( self:GetAngles() )
-	self.redsoldier:SetKeyValue( "model", "models/tfa/comm/gg/npc_comb_sw_droid_b2.mdl" )
+	self.redsoldier:SetKeyValue( "model", "models/npc/b2_battledroid/b2_battledroid.mdl" )
 	self.redsoldier:SetKeyValue( "spawnflags", "256" + "8192" )
 	self.redsoldier:SetKeyValue( "squadname", Squad[math.random(1,3)] )
 	if GetConVarNumber("rvb_mp_mode") == 0 then
@@ -83,7 +83,7 @@ function ENT:Initialize()
 	self.redsoldier:Activate()
 	self.redsoldier:SetCurrentWeaponProficiency( Skill[5] )
 	local redsoldier_name = "redsoldier" .. self.redsoldier:EntIndex()
-	self.redsoldier:SetName( redsoldier_name )
+	self.redsoldier:SetName( "npc_red_super_battle_droid" )
 	self.PatrolNodesMemory = {}
 	self.PatrolNodesMax = {}
 	self.WaitHereAndCheck = 0
@@ -93,8 +93,8 @@ function ENT:Initialize()
 		self.redsoldier.CommandedNPC = false
 		self.redsoldier.HaveCommander = false
 		self.redsoldier.Red = true
-		self.redsoldier:SetHealth(250)
-		self.redsoldier:SetMaxHealth(250)
+		self.redsoldier:SetHealth(130)
+		self.redsoldier:SetMaxHealth(130)
 end
 end
 

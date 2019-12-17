@@ -61,9 +61,9 @@ function ENT:Initialize()
 	self:SetModel( "models/shells/shell_12gauge.mdl" )
 	self.redsoldier:SetPos( self:GetPos() )
 	self.redsoldier:SetAngles( self:GetAngles() )
-	self.redsoldier:SetKeyValue( "model", "models/vj_starwars/droid/b1.mdl" )
+	self.redsoldier:SetKeyValue( "model", "models/npc/b1_battledroids/assault/b1_battledroid_assault.mdl" ) --models/npc/b1_battledroids/assault/b1_battledroid_assault.mdl
 	self.redsoldier:SetKeyValue( "spawnflags", "256" + "8192" )
-	self.redsoldier:SetKeyValue( "squadname", Squad[math.random(1,3)] )
+	self.redsoldier:SetKeyValue( "squadname", Squad[math.random(1,3)] ) -- models/vj_starwars/droid/b1.mdl
 	if GetConVarNumber("rvb_mp_mode") == 0 then
 	self.redsoldier:SetKeyValue( "additionalequipment", GetConVarString("gmod_npcweapon") )
 	if GetConVarString("gmod_npcweapon") == "" then
@@ -82,7 +82,7 @@ function ENT:Initialize()
 	self.redsoldier:Spawn()
 	self.redsoldier:Activate()
 	self.redsoldier:SetCurrentWeaponProficiency( Skill[5] )
-	local redsoldier_name = "redsoldier" .. self.redsoldier:EntIndex()
+	local redsoldier_name = "npc_red_combine_soldier"
 	self.redsoldier:SetName( redsoldier_name )
 	self.PatrolNodesMemory = {}
 	self.PatrolNodesMax = {}

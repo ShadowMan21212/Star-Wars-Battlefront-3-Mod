@@ -11,9 +11,17 @@ ENT.Category		= "Red VS Blu"
 ENT.Spawnable		= true
 ENT.AdminOnly		= true
 
+local blu_team = nil
 
+local red_team = nil
+
+
+local pblu = nil
+local pred = nil
 if SERVER then
 
+
+	
 
 function ENT:Initialize()
 self:SetModel("models/capturepoint/white_none/base.mdl")
@@ -83,28 +91,46 @@ if self.RedProgress < 15 and self.RedProgress != 0 then
 end
 
 if self.RedProgress >= 100 and self.Owner != "red" then
-	local ent = ents.Create( "red_spawner_soldier" )
+	local entities_max = ents.GetAll()
+	for k,v in pairs(entities_max) do
+	if v:IsPlayer() then
+	pblu = v:GetNetworkedBool("pblu",nil)
+	pred = v:GetNetworkedBool("pred",nil)
+	print(pred)
+end
+end
+	local ent = ents.Create( red_team )
 	ent:SetKeyValue( "disableshadows", "1" )
 	ent:SetPos( self:GetPos() )
 	ent:SetModel( "" )
 	ent:SetColor( 255, 255, 255, 0 )
 	ent:Spawn()
 	ent:Activate()
-	local ent2 = ents.Create( "red_spawner_soldier" )
-	ent2:SetKeyValue( "disableshadows", "1" )
-	ent2:SetPos( self:GetPos() )
-	ent2:SetModel( "" )
-	ent2:SetColor( 255, 255, 255, 0 )
-	ent2:Spawn()
-	ent2:Activate()
+
 	for k, v in pairs(ents.FindInSphere( self:GetPos(), 50 )) do
 	if v:GetClass() == "blu_spawner_soldier" then
 		v:Remove()
 	end
 	--ents.FindByClass( "blu_spawner_soldier" ):Remove()
 	self.Owner = "red"
+	if red_team == "red_spawner_npc_red_b1_droid_standard" then 
 	self:SetSkin(1)
-	self:SetModel("models/capturepoint/red/cis/cis_r.mdl")
+	self:SetModel("models/capturepoint/red/cis/cis_r.mdl")--models/capturepoint/blue/cis/cis_b.mdl
+		RunConsoleCommand("replos")
+	elseif red_team == "red_spawner_npc_red_stormtrooper" then
+		self:SetSkin(1)
+	self:SetModel("models/capturepoint/red/imperial/imperial_r.mdl")--models/capturepoint/blue/cis/cis_b.mdl
+		RunConsoleCommand("replos")
+			elseif red_team == "red_spawner_npc_red_rebel" then
+		self:SetSkin(1)
+	self:SetModel("models/capturepoint/red/rebels/rebels_r.mdl")--models/capturepoint/blue/cis/cis_b.mdl
+		RunConsoleCommand("replos")
+else
+
+		self:SetSkin(1)
+	self:SetModel("models/capturepoint/red/republic/republic_r.mdl")--models/capturepoint/red/republic/republic_r.mdl
+	RunConsoleCommand("seplos")
+end
 	for k,v in pairs (player.GetAll()) do
 		v:PrintMessage( HUD_PRINTCENTER, "The Sepratists have captured a command post!" )
 	end
@@ -135,7 +161,24 @@ end
 --end
 --end
 if self.BluProgress >= 100 and self.Owner == "nil" then
-	local ent = ents.Create( "blu_spawner_soldier" )
+	if blu_team == "blu_spawner_npc_blu_stormtrooper" then
+		RunConsoleCommand("impcap")
+	end
+	if blu_team == "blu_spawner_npc_blu_clone_501st_ep3_soldier" then 
+		RunConsoleCommand("repcap")
+	end
+	if blu_team == "blu_spawner_npc_blu_rebel" then
+		RunConsoleCommand("repcap")
+	end
+		local entities_max = ents.GetAll()
+	for k,v in pairs(entities_max) do
+	if v:IsPlayer() then
+	pblu = v:GetNetworkedBool("pblu",nil)
+	pred = v:GetNetworkedBool("pred",nil)
+	print(pred)
+end
+end
+	local ent = ents.Create( blu_team )
 	ent:SetKeyValue( "disableshadows", "1" )
 	ent:SetPos( self:GetPos() )
 	ent:SetModel( "" )
@@ -148,8 +191,24 @@ if self.BluProgress >= 100 and self.Owner == "nil" then
 		v:Remove()
 	end
 	self.Owner = "blu"
+	if blu_team == "blu_spawner_npc_blu_clone_501st_ep3_soldier" then 
 	self:SetSkin(2)
 	self:SetModel("models/capturepoint/blue/republic/republic_b.mdl")
+	
+	elseif blu_team == "blu_spawner_npc_blu_rebel" then
+	self:SetSkin(2)
+	self:SetModel("models/capturepoint/blue/rebels/rebels_b.mdl") --models/capturepoint/blue/cis/cis_b.mdl
+	
+	elseif blu_team == "blu_spawner_npc_blu_stormtrooper" then
+	self:SetSkin(2)
+	self:SetModel("models/capturepoint/blue/imperial/imperial_b.mdl") --models/capturepoint/blue/cis/cis_b.mdl
+	
+	
+else
+		self:SetSkin(2)
+	self:SetModel("models/capturepoint/blue/cis/cis_b.mdl") --models/capturepoint/blue/cis/cis_b.mdl
+	RunConsoleCommand("sepcap")
+end
 	for k,v in pairs (player.GetAll()) do
 		v:PrintMessage( HUD_PRINTCENTER, "The Republic has captured a command post!" )
 	end
@@ -177,3 +236,37 @@ function ENT:OnRemove()
 CONTROL_POINT_MODE = nil
 end
 
+function blu_republic()
+	blu_team = "blu_spawner_npc_blu_clone_501st_ep3_soldier"
+end
+function blu_cis()
+	blu_team = "blu_spawner_npc_blu_b1_droid_standard"
+end
+function red_republic()
+	red_team = "red_spawner_npc_red_clone_501st_ep3_soldier"
+end
+function red_cis()
+	red_team = "red_spawner_npc_red_b1_droid_standard"
+end
+
+function red_empire()
+	red_team = "red_spawner_npc_red_stormtrooper"
+end
+function red_rebels()
+	red_team = "red_spawner_npc_red_rebel"
+end
+
+function blu_rebels()
+	blu_team = "blu_spawner_npc_blu_rebel"
+end
+function blu_empire()
+	blu_team = "blu_spawner_npc_blu_stormtrooper"
+end
+concommand.Add("select_blu_republic", blu_republic)
+concommand.Add("select_blu_cis", blu_cis)
+concommand.Add("select_red_republic", red_republic)
+concommand.Add("select_red_cis", red_cis)
+concommand.Add("select_blu_rebels", blu_rebels)
+concommand.Add("select_blu_empire", blu_empire)
+concommand.Add("select_red_rebels", red_rebels)
+concommand.Add("select_red_empire", red_empire)

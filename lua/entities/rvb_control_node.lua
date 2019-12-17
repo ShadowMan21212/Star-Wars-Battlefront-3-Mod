@@ -3,7 +3,7 @@ AddCSLuaFile()
 
 ENT.Type 			= "anim"
 ENT.Base 			= "base_anim"
-ENT.PrintName		= "Capture Point"
+ENT.PrintName		= "Capture Node"
 ENT.Author			= "Lesslife"
 ENT.Information		= ""
 ENT.Category		= "Red VS Blu"
@@ -16,7 +16,8 @@ if SERVER then
 
 
 function ENT:Initialize()
-	self:SetModel( "models/shells/shell_12gauge.mdl" )
+	--self:SetModel( "models/capturepoint/white_none/base.mdl" )---"models/capturepoint/white_none/base.mdl"   "models/shells/shell_12gauge.mdl"
+	self:SetModel( "models/shells/shell_12gauge.mdl")
 self:PhysicsInit( SOLID_NONE )
 self:SetMoveType( MOVETYPE_NONE )
 self:SetSolid( SOLID_VPHYSICS )

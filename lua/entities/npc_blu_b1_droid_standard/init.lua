@@ -13,7 +13,7 @@ function ENT:SpawnFunction( ply, tr )
 	self.Spawn_angles.roll = 0
 	self.Spawn_angles.yaw = self.Spawn_angles.yaw + 180
 
-	local ent = ents.Create( "npc_blu_combine_soldier" )
+	local ent = ents.Create( "npc_blu_b1_droid_standard" )
 	ent:SetKeyValue( "disableshadows", "1" )
 	ent:SetPos( SpawnPos )
 	ent:SetAngles( self.Spawn_angles )
@@ -37,9 +37,9 @@ local Skill = {}
 	Skill[4] = (NS4)
 	Skill[5] = (NS5)
 
-Weap1 = "weapon_752_dc15s"
-Weap2 = "weapon_752_dc15s"
-Weap3 = "weapon_752_dc15s"
+Weap1 = "weapon_752_e5"
+Weap2 = "weapon_752_e5"
+Weap3 = "weapon_752_e5"
 
 local Weapon = {}
 	Weapon[1] = (Weap1)
@@ -60,7 +60,7 @@ function ENT:Initialize()
 	self:SetModel( "models/shells/shell_12gauge.mdl" )
 	self.blusoldier:SetPos( self:GetPos() )
 	self.blusoldier:SetAngles( self:GetAngles() )
-	self.blusoldier:SetKeyValue( "model", "models/npc/player/sono/starwars/501st_trooper.mdl" ) ---models/hyperspace_network/501st_trooper_npc/501st_trooper_npc.mdl
+	self.blusoldier:SetKeyValue( "model", "models/npc/b1_battledroids/assault/b1_battledroid_assault.mdl" ) ---models/hyperspace_network/501st_trooper_npc/501st_trooper_npc.mdl models/npc/player/sono/starwars/501st_trooper.mdl
 	self.blusoldier:SetKeyValue( "spawnflags", "256" + "8192" )
 	self.blusoldier:SetKeyValue( "squadname", Squad[math.random(1,3)] )
 	if GetConVarNumber("rvb_mp_mode") == 0 then
@@ -81,8 +81,8 @@ function ENT:Initialize()
 	self.blusoldier:Spawn()
 	self.blusoldier:Activate()
 	self.blusoldier:SetCurrentWeaponProficiency( Skill[math.random(4,5)] )
-	local blusoldier_name = "npc_blu_combine_soldier"
-	self.blusoldier:SetName( blusoldier_name )
+	local blusoldier_name = "blusoldier" .. self.blusoldier:EntIndex()
+	self.blusoldier:SetName( "npc_blu_b1_droid_standard" )
 	self.PatrolNodesMemory = {}
 	self.PatrolNodesMax = {}
 	self.WaitHereAndCheck = 0

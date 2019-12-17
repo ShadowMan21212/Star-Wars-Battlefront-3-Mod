@@ -81,7 +81,7 @@ function ENT:Initialize()
 	self.blusoldier:Spawn()
 	self.blusoldier:Activate()
 	self.blusoldier:SetCurrentWeaponProficiency( Skill[math.random(4,5)] )
-	local blusoldier_name = "blusoldier" .. self.blusoldier:EntIndex()
+	local blusoldier_name = "npc_blu_clone_sniper"
 	self.blusoldier:SetName( blusoldier_name )
 	self.PatrolNodesMemory = {}
 	self.PatrolNodesMax = {}
