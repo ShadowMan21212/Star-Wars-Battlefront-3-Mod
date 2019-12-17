@@ -1,15 +1,43 @@
 #Test Gamemode
 local entities = ents.GetAll()
 
-hook.Add("OnNPCKilled","SpecialTest",function()
+local blu_team = {}
+table.insert(blu_team,"npc_monk")
+table.insert(blu_team,"npc_blu_b1_droid_standard")
+table.insert(blu_team,"npc_blu_clone_501st_ep3_soldier")
+table.insert(blu_team,"npc_blu_combine_soldier")
+table.insert(blu_team,"npc_blu_clone_sniper")
+table.insert(blu_team,"npc_blu_rebel_soldier")
+table.insert(blu_team,"npc_blu_stormtrooper")
+table.insert(blu_team,"npc_blu_clone_sniper")
+local red_team = {}
+table.insert(red_team,"npc_pigeon")
+table.insert(red_team,"npc_red_b1_droid_standard")
+table.insert(red_team,"npc_red_clone_501st_ep3_soldier")
+table.insert(red_team,"npc_red_super_battle_droid")
+table.insert(red_team,"npc_red_combine_soldier")
+table.insert(red_team,"npc_red_rebel_soldier")
+table.insert(red_team,"npc_red_stormtrooper")
+table.insert(red_team,"npc_red_super_battledroid")
 
-	for k, v in pairs(entities) do
-		if v:IsPlayer() and v:GetClass() == "npc_monk" then
-			v:AddFrags(1)
-		
+hook.Add("OnNPCKilled","SpecialTest",function(npc,attacker,inflictor,ply)
+
+		if attacker:IsPlayer() then
+
+		RunConsoleCommand("add_kill")
 		end
-	end
-	
+
+		if table.HasValue(red_team,npc:GetName()) == true then
+			RunConsoleCommand("add_blu_team_kills")
+			RunConsoleCommand("createKillNumber")
+			
+				RunConsoleCommand("plus_health")
+
+		end
+
+		if table.HasValue(blu_team,npc:GetName()) == true then
+			RunConsoleCommand("add_red_team_kills")
+		end
 
 --	print("Team 1 has "..team1kills.." kills")
 end)
@@ -31,9 +59,10 @@ hook.Add("EntityTakeDamage","yo",function(target,dmginfo)
 			v:AddFrags(2)
 			
 		end
-		elseif target:IsNPC() and target:GetModel() == "models/vj_starwars/droid/b1.mdl" or target:GetModel() == "models/tfa/comm/gg/npc_comb_sw_droid_b2.mdl"then
+		elseif target:IsNPC() and target:GetModel() == "models/vj_starwars/droid/b1.mdl" or target:GetModel() == "models/tfa/comm/gg/npc_comb_sw_droid_b2.mdl" or "models/npc/b1_battledroids/assault/b1_battledroid_assault.mdl" or "models/npc/b2_battledroid/b2_battledroid.mdl" then   
 			if dmginfo:GetDamage()>=target:Health()and v:IsPlayer() then
 			v:AddDeaths(1)
+			
 		end
 	end
 end

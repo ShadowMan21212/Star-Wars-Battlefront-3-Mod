@@ -1,5 +1,8 @@
 #deathmatch_cl
 
+local blu_team_kills = 0
+local red_team_kills = 0
+
 hook.Add("HUDPaint","NeawCapHud",function()
 	local current_ammo =LocalPlayer():GetActiveWeapon():Clip1()
 local max_clip_size = LocalPlayer():GetActiveWeapon():GetMaxClip1()
@@ -9,9 +12,9 @@ local ammo_ratio = current_ammo/max_clip_size
 	local kills = ply:Frags()
 	local deaths = ply:Deaths()
 	local health = ply:Health()
-	draw.RoundedBox(0,ScrW()-1306,ScrH()-960,1.1*(deaths),8,(Color(26,127,153,255)))
-	draw.RoundedBox(0,ScrW()-833,ScrH()-959,1.1*(kills),8,(Color(155,17,22,255)))
-	local cap = Material("C:/Users/The Asian Gamer/Desktop/New folder (9)/yellowammo3.png")
+	draw.RoundedBox(0,ScrW()-1306,ScrH()-960,1.1*(blu_team_kills),8,(Color(26,127,153,255)))
+	draw.RoundedBox(0,ScrW()-833,ScrH()-959,1.1*(red_team_kills),8,(Color(155,17,22,255)))
+	local cap = Material("materials/hud/yellowammo3.png")
 			
 local value =ammo_ratio/2
  local v = 179
@@ -125,3 +128,15 @@ end
 end
 end)
 --U2hhZG93TWFu
+
+function add_blu_team_kills()
+	blu_team_kills = blu_team_kills + 1
+	print(blu_team_kills)
+end
+
+function add_red_team_kills()
+	red_team_kills = red_team_kills + 1
+end
+
+concommand.Add("add_blu_team_kills", add_blu_team_kills)
+concommand.Add("add_red_team_kills", add_red_team_kills)

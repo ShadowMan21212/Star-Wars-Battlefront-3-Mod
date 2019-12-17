@@ -1,5 +1,5 @@
 
-
+local kill_time = 255
 
 
 surface.CreateFont( "TheDefaultSettings", {
@@ -30,3 +30,13 @@ draw.DrawText("+1 | You killed an enemy","TheDefaultSettings",1050,530,Color(255
 end
 end
 end)
+
+function lower_opacity()
+	kill_time = kill_time - 10
+end
+concommand.Add("kill_time", lower_opacity)
+
+hook.Add("Tick", "ticktest", function()
+	lower_opacity()
+	print(kill_time)
+end

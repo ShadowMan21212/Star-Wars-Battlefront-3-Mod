@@ -397,15 +397,223 @@ wep:SetDarkInner( false ) -- Whether the blade inner part is dark or not
 wep:SetWorldModel( "models/sgg/starwars/weapons/w_common_jedi_saber_hilt.mdl" ) -- The full model path
 wep:SetBladeWidth( 2 ) -- Blade width
 
+wep.LoopSound = "lightsaber/saber_loop1.wav" -- Hum sound, full paths
+wep.SwingSound = "lightsaber/saber_swing1.wav" -- Swing sound
+wep:SetOnSound( "lightsaber/saber_on1.wav" ) -- On sound
+wep:SetOffSound( "lightsaber/saber_off1.wav" ) -- Off sound
 
+local wep2 = ply:Give( "weapon_lightsaber_form_2_2" )
+if ( !IsValid( wep2 ) ) then return end -- The player already has the weapon
+
+wep2.WeaponSynched = true -- Prevent the weapon from loading settings from the Sandbox tool
+
+wep2:SetMaxLength( 42 ) -- Blade length
+wep2:SetCrystalColor( Vector( 33, 255, 0 ) ) -- Blade color - must be a Vector, not a Color
+wep2:SetDarkInner( false ) -- Whether the blade inner part is dark or not
+wep2:SetWorldModel( "models/sgg/starwars/weapons/w_common_jedi_saber_hilt.mdl" ) -- The full model path
+wep2:SetBladeWidth( 2 ) -- Blade width
+
+wep2.LoopSound = "lightsaber/saber_loop1.wav" -- Hum sound, full paths
+wep2.SwingSound = "lightsaber/saber_swing1.wav" -- Swing sound
+wep2:SetOnSound( "lightsaber/saber_on1.wav" ) -- On sound
+wep2:SetOffSound( "lightsaber/saber_off1.wav" ) -- Off sound
+
+local wep3 = ply:Give( "weapon_lightsaber_form_2_3" )
+if ( !IsValid( wep3 ) ) then return end -- The player already has the weapon
+
+wep3.WeaponSynched = true -- Prevent the weapon from loading settings from the Sandbox tool
+
+wep3:SetMaxLength( 42 ) -- Blade length
+wep3:SetCrystalColor( Vector( 33, 255, 0 ) ) -- Blade color - must be a Vector, not a Color
+wep3:SetDarkInner( false ) -- Whether the blade inner part is dark or not
+wep3:SetWorldModel( "models/sgg/starwars/weapons/w_common_jedi_saber_hilt.mdl" ) -- The full model path
+wep3:SetBladeWidth( 2 ) -- Blade width
+
+wep3.LoopSound = "lightsaber/saber_loop1.wav" -- Hum sound, full paths
+wep3.SwingSound = "lightsaber/saber_swing1.wav" -- Swing sound
+wep3:SetOnSound( "lightsaber/saber_on1.wav" ) -- On sound
+wep3:SetOffSound( "lightsaber/saber_off1.wav" ) -- Off sound
 
     ply:SetModel( "models/ferroda/ferroda_2.mdl" )
-
-     ply:Give( "weapon_lightsaber_form_2_2" )
-      ply:Give( "weapon_lightsaber_form_2_3" )
     ply.Blu = true
 include( "bf3_main_files/lightsabertest3.lua" )
 end
+
+function winduloadout(ply) 
+ ply:StripWeapons()
+
+
+local wep = ply:Give( "weapon_lightsaber_form_2_1" )
+if ( !IsValid( wep ) ) then return end -- The player already has the weapon
+
+wep.WeaponSynched = true -- Prevent the weapon from loading settings from the Sandbox tool
+
+wep:SetMaxLength( 42 ) -- Blade length
+wep:SetCrystalColor( Vector( 153, 51, 255 ) ) -- Blade color - must be a Vector, not a Color
+wep:SetDarkInner( false ) -- Whether the blade inner part is dark or not
+wep:SetWorldModel( "models/sgg/starwars/weapons/w_common_jedi_saber_hilt.mdl" ) -- The full model path
+wep:SetBladeWidth( 2 ) -- Blade width
+
+wep.LoopSound = "lightsaber/saber_loop1.wav" -- Hum sound, full paths
+wep.SwingSound = "lightsaber/saber_swing1.wav" -- Swing sound
+wep:SetOnSound( "lightsaber/saber_on1.wav" ) -- On sound
+wep:SetOffSound( "lightsaber/saber_off1.wav" ) -- Off sound
+
+local wep2 = ply:Give( "weapon_lightsaber_form_2_2" )
+if ( !IsValid( wep2 ) ) then return end -- The player already has the weapon
+
+wep2.WeaponSynched = true -- Prevent the weapon from loading settings from the Sandbox tool
+
+wep2:SetMaxLength( 42 ) -- Blade length
+wep2:SetCrystalColor( Vector( 153, 51, 255 ) ) -- Blade color - must be a Vector, not a Color
+wep2:SetDarkInner( false ) -- Whether the blade inner part is dark or not
+wep2:SetWorldModel( "models/sgg/starwars/weapons/w_common_jedi_saber_hilt.mdl" ) -- The full model path
+wep2:SetBladeWidth( 2 ) -- Blade width
+
+wep2.LoopSound = "lightsaber/saber_loop1.wav" -- Hum sound, full paths
+wep2.SwingSound = "lightsaber/saber_swing1.wav" -- Swing sound
+wep2:SetOnSound( "lightsaber/saber_on1.wav" ) -- On sound
+wep2:SetOffSound( "lightsaber/saber_off1.wav" ) -- Off sound
+
+local wep3 = ply:Give( "weapon_lightsaber_form_2_3" )
+if ( !IsValid( wep3 ) ) then return end -- The player already has the weapon
+
+wep3.WeaponSynched = true -- Prevent the weapon from loading settings from the Sandbox tool
+
+wep3:SetMaxLength( 42 ) -- Blade length
+wep3:SetCrystalColor( Vector( 153, 51, 255 ) ) -- Blade color - must be a Vector, not a Color
+wep3:SetDarkInner( false ) -- Whether the blade inner part is dark or not
+wep3:SetWorldModel( "models/sgg/starwars/weapons/w_common_jedi_saber_hilt.mdl" ) -- The full model path
+wep3:SetBladeWidth( 2 ) -- Blade width
+
+wep3.LoopSound = "lightsaber/saber_loop1.wav" -- Hum sound, full paths
+wep3.SwingSound = "lightsaber/saber_swing1.wav" -- Swing sound
+wep3:SetOnSound( "lightsaber/saber_on1.wav" ) -- On sound
+wep3:SetOffSound( "lightsaber/saber_off1.wav" ) -- Off sound
+
+    ply:SetModel( "models/ryan7259/mace_windu/mace_windu_player.mdl" )
+    ply.Blu = true
+include( "bf3_main_files/lightsabertest3.lua" )
+end
+
+function lukeloadout(ply) 
+ ply:StripWeapons()
+
+
+local wep = ply:Give( "weapon_lightsaber_form_2_1" )
+if ( !IsValid( wep ) ) then return end -- The player already has the weapon
+
+wep.WeaponSynched = true -- Prevent the weapon from loading settings from the Sandbox tool
+
+wep:SetMaxLength( 42 ) -- Blade length
+wep:SetCrystalColor( Vector( 0, 63, 255 ) ) -- Blade color - must be a Vector, not a Color
+wep:SetDarkInner( false ) -- Whether the blade inner part is dark or not
+wep:SetWorldModel( "models/sgg/starwars/weapons/w_anakin_ep3_saber_hilt.mdl" ) -- The full model path
+wep:SetBladeWidth( 2 ) -- Blade width
+
+wep.LoopSound = "lightsaber/saber_loop1.wav" -- Hum sound, full paths
+wep.SwingSound = "lightsaber/saber_swing1.wav" -- Swing sound
+wep:SetOnSound( "lightsaber/saber_on1.wav" ) -- On sound
+wep:SetOffSound( "lightsaber/saber_off1.wav" ) -- Off sound
+
+local wep2 = ply:Give( "weapon_lightsaber_form_2_2" )
+if ( !IsValid( wep2 ) ) then return end -- The player already has the weapon
+
+wep2.WeaponSynched = true -- Prevent the weapon from loading settings from the Sandbox tool
+
+wep2:SetMaxLength( 42 ) -- Blade length
+wep2:SetCrystalColor( Vector( 0, 63, 255 ) ) -- Blade color - must be a Vector, not a Color
+wep2:SetDarkInner( false ) -- Whether the blade inner part is dark or not
+wep2:SetWorldModel( "models/sgg/starwars/weapons/w_anakin_ep3_saber_hilt.mdl" ) -- The full model path
+wep2:SetBladeWidth( 2 ) -- Blade width
+
+wep2.LoopSound = "lightsaber/saber_loop1.wav" -- Hum sound, full paths
+wep2.SwingSound = "lightsaber/saber_swing1.wav" -- Swing sound
+wep2:SetOnSound( "lightsaber/saber_on1.wav" ) -- On sound
+wep2:SetOffSound( "lightsaber/saber_off1.wav" ) -- Off sound
+
+local wep3 = ply:Give( "weapon_lightsaber_form_2_3" )
+if ( !IsValid( wep3 ) ) then return end -- The player already has the weapon
+
+wep3.WeaponSynched = true -- Prevent the weapon from loading settings from the Sandbox tool
+
+wep3:SetMaxLength( 42 ) -- Blade length
+wep3:SetCrystalColor( Vector( 0, 63, 255 ) ) -- Blade color - must be a Vector, not a Color
+wep3:SetDarkInner( false ) -- Whether the blade inner part is dark or not
+wep3:SetWorldModel( "models/sgg/starwars/weapons/w_anakin_ep3_saber_hilt.mdl" ) -- The full model path
+wep3:SetBladeWidth( 2 ) -- Blade width
+
+wep3.LoopSound = "lightsaber/saber_loop1.wav" -- Hum sound, full paths
+wep3.SwingSound = "lightsaber/saber_swing1.wav" -- Swing sound
+wep3:SetOnSound( "lightsaber/saber_on1.wav" ) -- On sound
+wep3:SetOffSound( "lightsaber/saber_off1.wav" ) -- Off sound
+
+    ply:SetModel( "models/player/valley/luke.mdl" )
+    ply.Blu = true
+include( "bf3_main_files/lightsabertest3.lua" )
+end
+
+
+
+function inquistorloadout(ply) 
+ ply:StripWeapons()
+
+
+local wep = ply:Give( "weapon_lightsaber_form_2_1" )
+if ( !IsValid( wep ) ) then return end -- The player already has the weapon
+
+wep.WeaponSynched = true -- Prevent the weapon from loading settings from the Sandbox tool
+
+wep:SetMaxLength( 42 ) -- Blade length
+wep:SetCrystalColor( Vector( 255, 0, 0 ) ) -- Blade color - must be a Vector, not a Color
+wep:SetDarkInner( false ) -- Whether the blade inner part is dark or not
+wep:SetWorldModel( "models/star/venator/inqusitor_saber.mdl" ) -- The full model path
+wep:SetBladeWidth( 2 ) -- Blade width
+
+wep.LoopSound = "lightsaber/saber_loop1.wav" -- Hum sound, full paths
+wep.SwingSound = "lightsaber/saber_swing1.wav" -- Swing sound
+wep:SetOnSound( "lightsaber/saber_on1.wav" ) -- On sound
+wep:SetOffSound( "lightsaber/saber_off1.wav" ) -- Off sound
+
+local wep2 = ply:Give( "weapon_lightsaber_form_2_2" )
+if ( !IsValid( wep2 ) ) then return end -- The player already has the weapon
+
+wep2.WeaponSynched = true -- Prevent the weapon from loading settings from the Sandbox tool
+
+wep2:SetMaxLength( 42 ) -- Blade length
+wep2:SetCrystalColor( Vector( 255, 0, 0 ) ) -- Blade color - must be a Vector, not a Color
+wep2:SetDarkInner( false ) -- Whether the blade inner part is dark or not
+wep2:SetWorldModel( "models/star/venator/inqusitor_saber.mdl" ) -- The full model path
+wep2:SetBladeWidth( 2 ) -- Blade width
+
+wep2.LoopSound = "lightsaber/saber_loop1.wav" -- Hum sound, full paths
+wep2.SwingSound = "lightsaber/saber_swing1.wav" -- Swing sound
+wep2:SetOnSound( "lightsaber/saber_on1.wav" ) -- On sound
+wep2:SetOffSound( "lightsaber/saber_off1.wav" ) -- Off sound
+
+local wep3 = ply:Give( "weapon_lightsaber_form_2_3" )
+if ( !IsValid( wep3 ) ) then return end -- The player already has the weapon
+
+wep3.WeaponSynched = true -- Prevent the weapon from loading settings from the Sandbox tool
+
+wep3:SetMaxLength( 42 ) -- Blade length
+wep3:SetCrystalColor( Vector( 255, 0, 0 ) ) -- Blade color - must be a Vector, not a Color
+wep3:SetDarkInner( false ) -- Whether the blade inner part is dark or not
+wep3:SetWorldModel( "models/star/venator/inqusitor_saber.mdl" ) -- The full model path
+wep3:SetBladeWidth( 2 ) -- Blade width
+
+wep3.LoopSound = "lightsaber/saber_loop1.wav" -- Hum sound, full paths
+wep3.SwingSound = "lightsaber/saber_swing1.wav" -- Swing sound
+wep3:SetOnSound( "lightsaber/saber_on1.wav" ) -- On sound
+wep3:SetOffSound( "lightsaber/saber_off1.wav" ) -- Off sound
+
+    ply:SetModel( "models/ethli/characters/inquisitorrebel/inquisitorrebel.mdl" )
+    ply.Blu = true
+include( "bf3_main_files/lightsabertest3.lua" )
+end
+
+
+
 
 function x2loadout(ply) 
  ply:StripWeapons()
@@ -432,14 +640,34 @@ function commandoloadout(ply)
 	include("bf3_main_files/zoomin.lua")
 end
 
+function rebelloadout(ply)
+	 ply:StripWeapons()
+
+    ply:SetModel( "models/player/sgg/starwars/rebels/r_soldier_forest/male_02.mdl" )
+     ply:Give( "tfa_a280_extended" )
+    ply.Blu = true
+	include("bf3_main_files/zoomin.lua")
+end
+
+function stormtroooperloadout(ply)
+	 ply:StripWeapons()
+
+    ply:SetModel( "models/player/ven/tk_basic_02/tk_basic.mdl" )
+     ply:Give( "weapon_752_e11" )
+    ply.Blu = true
+	include("bf3_main_files/zoomin.lua")
+end
 
 
-
-
+concommand.Add("inquistorloadout", inquistorloadout)
+concommand.Add("rebelloadout", rebelloadout)
+concommand.Add("stormtroooperloadout", stormtroooperloadout)
 concommand.Add("reploudout1",reploadout1load)
 concommand.Add("reploudout2",reploadout2load)
 concommand.Add("reploudout3",reploadout3load)
 concommand.Add("ferrodaloadout1",ferrodaloadout)
+concommand.Add("winduloadout",winduloadout)
+concommand.Add("lukeloadout",lukeloadout)
 concommand.Add("x2loadout1",x2loadout)
 concommand.Add("x1loadout1",x1loadout)
 concommand.Add("commandoloadout1",commandoloadout)

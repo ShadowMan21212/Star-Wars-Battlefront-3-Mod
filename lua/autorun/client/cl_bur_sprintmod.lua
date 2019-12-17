@@ -1,8 +1,56 @@
 CreateClientConVar("cl_bur_sprintmod_enablehud",1,true,false)
 CreateClientConVar("cl_bur_sprintmod_fade",1,true,false)
+local blu_team = nil
+local red_team = nil
 
+function blu_republicpic()
+	blu_team = "repcheck4.png"
+	team = "republic"
+end
+function blu_cispic()
+	blu_team = "cischeckblue.png"
+	team = "cis"
+end
+function red_republicpic()
+	red_team = "repcheckred.png"
+end
+function red_cispic()
+	red_team = "cischeck3.png"
+end
 
+function red_empirepic()
+	red_team = "empirecheckred.png"
+end
+function red_rebelspic()
+	red_team = "rebcheckred.png"
+end
+
+function blu_rebelspic()
+	blu_team = "rebcheckblu.png"
+	team = "rebels"
+end
+function blu_empirepic()
+	blu_team = "empirecheckblu.png"
+	team = "empire"
+end
+concommand.Add("select_blu_republicpic", blu_republicpic)
+concommand.Add("select_blu_cispic", blu_cispic)
+concommand.Add("select_red_republicpic", red_republicpic)
+concommand.Add("select_red_cispic", red_cispic)
+concommand.Add("select_blu_rebelspic", blu_rebelspic)
+concommand.Add("select_blu_empirepic", blu_empirepic)
+concommand.Add("select_red_rebelspic", red_rebelspic)
+concommand.Add("select_red_empirepic", red_empirepic)
+
+timer.Simple(5,function()
 AddCSLuaFile("televgui.lua")
+local hero_table = {}
+table.insert(hero_table,"models/models/ferroda/ferroda_2.mdl")
+table.insert(hero_table,"models/ryan7259/mace_windu/mace_windu_player.mdl")
+table.insert(hero_table,"models/player/valley/luke/luke.mdl")
+table.insert(hero_table,"models/ethli/characters/inquisitorrebel/inquisitorrebel.mdl")
+local blu_team_kills = 0
+local red_team_kills = 0
 
 net.Receive("StaminaSpawn", function(len)
 
@@ -187,7 +235,15 @@ surface.CreateFont( "SprintFont", {
 local Alpha = 0
 
 function DrawBurStamina()
-	local current_ammo =LocalPlayer():GetActiveWeapon():Clip1()
+	local current_ammo = nil
+
+			if game.GetMap() != "rp_venator_extensive" then
+
+for k, v in pairs( player.GetAll() ) do
+	if  v:Alive()== true then
+
+	current_ammo =LocalPlayer():GetActiveWeapon():Clip1()
+	
 local max_clip_size = LocalPlayer():GetActiveWeapon():GetMaxClip1()
 local ammo_ratio = current_ammo/max_clip_size
 
@@ -215,7 +271,8 @@ local value =ammo_ratio/2
 surface.SetMaterial(cap)
 surface.SetDrawColor(255,255,255,255)
 surface.DrawTexturedRectUV(ScrW()-1695+u,ScrH()-267+r,width,height,u1,v1,u2,v2)
-
+end
+end
 	local ply = LocalPlayer()
 	
 	if ply.HasOblivionHUD then return end
@@ -287,9 +344,10 @@ surface.DrawTexturedRectUV(ScrW()-1712+u,ScrH()-267+r,width,height,u1,v1,u2,v2)
 
 	surface.DrawTexturedRect( 0, 0, 1920, 1080 )
 local entities_max = ents.GetAll()
+
 	local nilmat = Material("materials/hud/nilcheck2.png")
-	local blumat = Material("materials/hud/repcheck4.png")
-	local redmat = Material("materials/hud/cischeck3.png")
+	local blumat = Material("materials/hud/"..blu_team)
+	local redmat = Material("materials/hud/"..red_team)
 	for k,v in pairs(entities_max) do
 	if v:IsPlayer() then
 		local cmd1ownersv = v:GetNetworkedString("cmd1owner", "fail")
@@ -515,10 +573,12 @@ end
 	local kills = ply:Frags()
 	local deaths = ply:Deaths()
 	local health = ply:Health()
-	draw.RoundedBox(0,ScrW()-1306,ScrH()-960,1.4*(deaths),8,(Color(26,127,153,255)))
-	draw.RoundedBox(0,ScrW()-833,ScrH()-959,1.4*(kills),8,(Color(155,17,22,255)))
-	draw.DrawText(tostring(deaths),"BF3FontL",625+1.4*(deaths),100,Color(255,255,255,255))
-	draw.DrawText(tostring(kills),"BF3FontL",1093+1.4*(kills),100,Color(255,255,255,255))
+	local btk = blu_team_kills
+	local rtk = red_team_kills
+	draw.RoundedBox(0,ScrW()-1306,ScrH()-960,1.4*(blu_team_kills),8,(Color(26,127,153,255)))---
+	draw.RoundedBox(0,ScrW()-833,ScrH()-959,1.4*(red_team_kills),8,(Color(155,17,22,255)))---
+	draw.DrawText(tostring(btk),"BF3FontL",625+1.4*(blu_team_kills),100,Color(255,255,255,255))
+	draw.DrawText(tostring(rtk),"BF3FontL",1093+1.4*(red_team_kills),100,Color(255,255,255,255))
 		
 		--draw.RoundedBox(0,ScrW()-1890,ScrH()-82,XSize*0.9*Percent*1.335,8,(Color(255,170,51,200)))--stamina bar
 		--if barchange <70 then
@@ -534,8 +594,8 @@ end
 		local kills = ply:Frags()
 		local deaths = ply:Deaths()
 		local health = ply:Health()
-	draw.RoundedBox(0,ScrW()-1306,ScrH()-960,1.1*(deaths),8,(Color(26,127,153,255)))
-	draw.RoundedBox(0,ScrW()-833,ScrH()-959,1.1*(kills),8,(Color(155,17,22,255)))
+	draw.RoundedBox(0,ScrW()-1306,ScrH()-960,1.1*(blu_team_kills),8,(Color(26,127,153,255)))
+	draw.RoundedBox(0,ScrW()-833,ScrH()-959,1.1*(red_team_kills),8,(Color(155,17,22,255)))
 		local yellowhealthstand = Material("materials/hud/yellowhealthstand.png")
 		local newhealthstand = Material("materials/hud/newbluehealthstand.png")
 		
@@ -559,17 +619,22 @@ surface.DrawTexturedRectUV(ScrW()-1825+u,ScrH()-254,300,214,0,0.28666666666667,1
 surface.SetMaterial(newhealthstand)
 surface.SetDrawColor(255,255,255,255)
 surface.DrawTexturedRectUV(ScrW()-1825+u,ScrH()-340+r,width,height,u1,v1,u2,v2)
-if LocalPlayer():GetModel() != "models/models/ferroda/ferroda_2.mdl" then
+if table.HasValue(hero_table,LocalPlayer():GetModel()) == false then
+
 local crosshair_type = Material("materials/hud/bf3testcrosshair4.png")
 surface.SetMaterial(crosshair_type)
 surface.SetDrawColor(255,255,255,255)
 
 
 surface.DrawTexturedRect(ScrW()/2-165/2,ScrH()/2-165/2,165,165)
-end
+
 
 end
 
+
+
+end
+end
 hook.Add("HUDPaint","Draw Burger Stamina",DrawBurStamina)
 
 hook.Add("ScalePlayerDamage","ferrodahealth",function( ply, hitgroup, dmginfo) 
@@ -577,6 +642,14 @@ hook.Add("ScalePlayerDamage","ferrodahealth",function( ply, hitgroup, dmginfo)
 		dmginfo:ScaleDamage( .01 ) // More damage when we're shot in the head
  	
 	end
+
+	if LocalPlayer():GetModel() == "models/ryan7259/mace_windu/mace_windu_player.mdl" then
+		dmginfo:ScaleDamage( .01 ) // More damage when we're shot in the head
+ 	
+	end
+
+
+
 end)
 
 
@@ -587,6 +660,7 @@ end)
 local flag = false
 local victory = false
 local defeat = false
+local spawn_flag = false
 
 function refresh()
 for k, v in pairs( player.GetAll() ) do
@@ -594,9 +668,11 @@ for k, v in pairs( player.GetAll() ) do
 		hook.Remove("HUDPaint", "Draw Burger Stamina")
 		hook.Remove("HUDPaint", "NeawCapHud")
 		print(v:Alive())
-include("bf3_main_files/televgui.lua")
+		if game.GetMap() != "rp_venator_extensive" and spawn_flag == true then
+include("bf3_main_files/"..game.GetMap().."_"..team.."_televgui.lua")
 print("hello world")
 flag = true
+end
 end
 if  v:Alive()== true then
 	hook.Add("HUDPaint","Draw Burger Stamina",DrawBurStamina)
@@ -609,16 +685,17 @@ end
 hook.Add("Tick","hopefulrefresh",refresh)
 
 hook.Add("Tick","TickBlah",function()
-
+local rtk = red_team_kills
 for k, v in pairs( player.GetAll() ) do
-if v:Frags() > 99 then
+if v:IsPlayer() and rtk > 99 then
 	defeat = true
 	v:Freeze( true )
 		print("DEFEAT")
 	RunConsoleCommand("ai_disabled","1")
 
 end
-if v:Deaths() > 99 then
+local btk = blu_team_kills
+if v:IsPlayer() and btk > 99 then
 	victory = true
 	v:Freeze( true )
 	print("VICTORY")
@@ -651,3 +728,27 @@ hook.Add("HUDPaint","Draw endgame Stamina",function()
 	end
 end
 		)
+
+
+
+function spawn_flag_activate()
+	spawn_flag = true
+end
+
+function add_blu_team_kills()
+	blu_team_kills = blu_team_kills + 1
+	print(blu_team_kills.."eheheheheh")
+	---RunConsoleCommand("createKillNumber")
+end
+
+function add_red_team_kills()
+	red_team_kills = red_team_kills + 1
+end
+
+concommand.Add("add_blu_team_kills", add_blu_team_kills)
+concommand.Add("add_red_team_kills", add_red_team_kills)
+
+concommand.Add("spawn_flag_activate", spawn_flag_activate)
+
+
+end)

@@ -119,9 +119,26 @@ local NPC = { 	Name = "[Red] Combine Helicopter",
 				Category = Category	}
 
 list.Set( "NPC", NPC.Class, NPC )
+
+
+
+
+
 --BLU--
 local NPC = { 	Name = "[Blu] Combine Soldier",
 				Class = "npc_blu_combine_soldier",
+				Category = Category	}
+
+list.Set( "NPC", NPC.Class, NPC )
+
+local NPC = { 	Name = "[Blu] Rebel Soldier",
+				Class = "npc_blu_rebel_soldier",
+				Category = Category	}
+
+list.Set( "NPC", NPC.Class, NPC )
+
+local NPC = { 	Name = "[Blu] Stormtrooper",
+				Class = "npc_blu_stormtrooper",
 				Category = Category	}
 
 list.Set( "NPC", NPC.Class, NPC )
